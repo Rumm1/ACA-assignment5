@@ -1,0 +1,676 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+.aca-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.aca-header {
+    background: linear-gradient(135deg, #3C3B6E 0%, #2A2A5E 100%);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.aca-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aca-logo {
+    display: flex;
+    align-items: center;
+}
+
+.aca-logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+}
+
+.aca-logo p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.aca-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.aca-nav ul li {
+    margin-left: 20px;
+}
+
+.aca-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.aca-nav ul li a:hover,
+.aca-nav ul li a.aca-active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.aca-university-logo {
+    height: 40px;
+    margin-left: 20px;
+}
+
+.aca-categories {
+    padding: 70px 0;
+    background-color: #fff;
+}
+
+.aca-section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #3C3B6E;
+    position: relative;
+    padding-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.aca-section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #3C3B6E, #B22234);
+    border-radius: 2px;
+}
+
+.aca-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.aca-category-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.aca-category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.aca-card-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.aca-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.aca-category-card:hover .aca-card-image img {
+    transform: scale(1.05);
+}
+
+.aca-card-content {
+    padding: 25px;
+    position: relative;
+}
+
+.aca-card-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #3C3B6E;
+    font-family: 'Playfair Display', serif;
+}
+
+.aca-card-content p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.aca-card-arrow {
+    color: #B22234;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.aca-category-card:hover .aca-card-arrow {
+    transform: translateX(5px);
+}
+
+.aca-about {
+    padding: 70px 0;
+    background-color: #f5f7fa;
+}
+
+.aca-about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.aca-about-text h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #3C3B6E;
+    font-family: 'Playfair Display', serif;
+}
+
+.aca-about-text p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.aca-btn {
+    display: inline-block;
+    background: #B22234;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.aca-btn:hover {
+    background: #9e1c2d;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(178, 34, 52, 0.3);
+}
+
+.aca-about-image {
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.aca-about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aca-grid-layout {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f5f7fa;
+}
+
+.aca-grid-header {
+    grid-area: header;
+    background: linear-gradient(135deg, #3C3B6E 0%, #2A2A5E 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.aca-grid-sidebar {
+    grid-area: sidebar;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.aca-grid-main {
+    grid-area: main;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.aca-grid-footer {
+    grid-area: footer;
+    background: linear-gradient(135deg, #1a2a6c, #3C3B6E);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.aca-gallery {
+    padding: 70px 0;
+    background-color: #fff;
+}
+
+.aca-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.aca-gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.aca-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.aca-gallery-caption {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(60, 59, 110, 0.9));
+    color: white;
+    padding: 20px;
+    transition: bottom 0.3s ease;
+}
+
+.aca-gallery-item:hover .aca-gallery-caption {
+    bottom: 0;
+}
+
+.aca-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Team Section */
+.aca-team-section {
+    background-color: #f5f7fa;
+    padding: 80px 0;
+}
+
+.aca-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.aca-team-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.aca-team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.aca-team-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3C3B6E;
+    margin: 25px auto 15px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.aca-team-card:hover .aca-team-image {
+    transform: scale(1.1);
+    border-color: #B22234;
+}
+
+.aca-team-content {
+    padding: 0 20px 25px;
+}
+
+.aca-team-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: #3C3B6E;
+    font-family: 'Playfair Display', serif;
+}
+
+.aca-team-role {
+    color: #B22234;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.aca-team-content p {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.aca-team-email {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    word-break: break-word;
+}
+
+.aca-footer {
+    background: linear-gradient(135deg, #1a2a6c, #3C3B6E);
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.aca-footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.aca-footer-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.aca-footer-section h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #B22234;
+    border-radius: 2px;
+}
+
+.aca-footer-section p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.aca-team-members {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.aca-team-member {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 15px;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+.aca-team-member:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.aca-footer-links {
+    list-style: none;
+}
+
+.aca-footer-links li {
+    margin-bottom: 12px;
+}
+
+.aca-footer-links li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.aca-footer-links li a i {
+    margin-right: 10px;
+    color: #B22234;
+    font-size: 0.9rem;
+}
+
+.aca-footer-links li a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.aca-footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+#main-content {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+#welcome-message {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: linear-gradient(135deg, #3C3B6E 0%, #2A2A5E 100%);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#welcome-message h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+#welcome-message p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+#featured-categories {
+    margin: 60px 0;
+    padding: 40px 0;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#cultural-highlights {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    padding: 60px 0;
+    margin: 50px 0;
+    border-radius: 15px;
+}
+
+#cultural-highlights h3 {
+    text-align: center;
+    color: #3C3B6E;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+
+#site-footer {
+    border-top: 3px solid #B22234;
+    background: linear-gradient(135deg, #1a1a4e, #3C3B6E);
+}
+
+#contact-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#contact-info h4 {
+    color: #B22234;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.aca-team-list {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.aca-team-list h4 {
+    color: #B22234;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+@media (max-width: 1200px) {
+    .aca-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .aca-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 200px);
+    }
+}
+
+@media (max-width: 992px) {
+    .aca-about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .aca-about-image {
+        order: -1;
+        height: 250px;
+    }
+    
+    .aca-grid-layout {
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .aca-header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .aca-nav ul {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .aca-nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .aca-university-logo {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    
+    .aca-hero-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .aca-hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .aca-categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .aca-team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .aca-gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9, 200px);
+    }
+    
+    .aca-footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .aca-team-members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .aca-footer-section {
+        text-align: center;
+    }
+    
+    .aca-footer-section h3:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

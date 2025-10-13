@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Cultural Association</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="aca-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --primary-blue: #3C3B6E;
+            --dark-blue: #2A2A5E;
+            --primary-red: #B22234;
+            --dark-red: #9e1c2d;
+            --light-bg: #f5f7fa;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+        
+        .aca-hero {
+            background: linear-gradient(rgba(60, 59, 110, 0.8), rgba(178, 34, 52, 0.8)), url('background.jpg') center/cover no-repeat;
+            height: 520px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .aca-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .aca-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .aca-hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .aca-hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .aca-tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 20px;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .navbar-custom {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%) !important;
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand-custom {
+            display: flex;
+            align-items: center;
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .aca-logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+            border: 2px solid var(--primary-red);
+            object-fit: cover;
+        }
+        
+        .aca-university-logo {
+            height: 50px;
+            margin-left: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--primary-blue);
+            object-fit: cover;
+        }
+
+        .nav-link-custom {
+            color: white !important;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 12px !important;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link-custom:hover,
+        .nav-link-custom.active {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        .carousel-custom .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .carousel-custom .carousel-caption {
+            background: rgba(60, 59, 110, 0.85);
+            border-radius: 10px;
+            padding: 20px;
+            bottom: 30px;
+        }
+
+        .carousel-custom .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .card-custom {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: none;
+            height: 100%;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-custom {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card-custom:hover .card-img-custom {
+            transform: scale(1.08);
+        }
+
+        .card-body-custom {
+            padding: 30px;
+        }
+
+        .card-title-custom {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .card-text-custom {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(178, 34, 52, 0.3);
+        }
+
+        .btn-custom:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-custom:hover:before {
+            left: 100%;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(135deg, var(--dark-red) 0%, #8a1724 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(178, 34, 52, 0.4);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+            background: transparent;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline-custom:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-red);
+            transition: 0.3s;
+            z-index: -1;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(178, 34, 52, 0.2);
+        }
+
+        .btn-outline-custom:hover:before {
+            left: 0;
+        }
+
+        .form-control-custom {
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(60, 59, 110, 0.1);
+        }
+
+        .aca-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .aca-section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--primary-red));
+            border-radius: 2px;
+        }
+
+        .aca-categories {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .aca-about {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .aca-about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .aca-about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .aca-about-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        .aca-about-image {
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .aca-about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .aca-about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .aca-team-section {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+        
+        .aca-team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .aca-team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .aca-team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .aca-team-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-blue);
+            margin: 30px auto 20px;
+            display: block;
+            transition: all 0.4s ease;
+        }
+        
+        .aca-team-card:hover .aca-team-image {
+            transform: scale(1.1);
+            border-color: var(--primary-red);
+        }
+        
+        .aca-team-content {
+            padding: 0 25px 30px;
+        }
+        
+        .aca-team-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .aca-team-role {
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .aca-team-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .aca-team-email {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            word-break: break-word;
+        }
+        
+        .aca-footer {
+            background: linear-gradient(135deg, #1a2a6c, var(--primary-blue));
+            color: white;
+            padding: 70px 0 25px;
+        }
+        
+        .aca-footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .aca-footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .aca-footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+        
+        .aca-footer-section p {
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #e8e8e8;
+            font-size: 1.05rem;
+        }
+        
+        .aca-team-members {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .aca-team-member {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: white !important;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .aca-team-member:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            color: white !important;
+            text-decoration: none;
+        }
+        
+        .aca-footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .aca-footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .aca-footer-links li a {
+            color: #e8e8e8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .aca-footer-links li a i {
+            margin-right: 12px;
+            color: var(--primary-red);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .aca-footer-links li a:hover {
+            color: #ffffff;
+            transform: translateX(8px);
+        }
+        
+        .aca-footer-links li a:hover i {
+            transform: scale(1.2);
+        }
+        
+        .aca-footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+        .aca-faq-section {
+        background-color: var(--light-bg);
+        }
+
+        .aca-accordion {
+        max-width: 800px;
+        margin: 0 auto;
+        }
+
+        .aca-accordion-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        }
+
+        .aca-accordion-item:hover {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .aca-accordion-header {
+        width: 100%;
+        background: white;
+        border: none;
+        padding: 20px 25px;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--primary-blue);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        font-family: 'Roboto', sans-serif;
+        }
+
+        .aca-accordion-header:hover {
+        background-color: rgba(60, 59, 110, 0.05);
+        }
+
+        .aca-accordion-header.active {
+        background-color: rgba(60, 59, 110, 0.1);
+        color: var(--dark-blue);
+        }
+
+        .aca-accordion-icon {
+        font-size: 1.3rem;
+        font-weight: 300;
+        transition: all 0.3s ease;
+        color: var(--primary-red);
+        }
+
+        .aca-accordion-header.active .aca-accordion-icon {
+        transform: rotate(45deg);
+        }
+
+        .aca-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+        background-color: white;
+        }
+
+        .aca-accordion-content.active {
+        max-height: 300px;
+        padding: 0 25px 20px;
+        }
+
+        .aca-accordion-content p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text-dark);
+        font-size: 1rem;
+        }
+
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .floating-btn {
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            font-size: 14px;
+            min-width: 160px;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        #openPopupBtn {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+        }
+
+        #themeToggleBtn {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: white;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: popupFadeIn 0.3s ease;
+        }
+
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .popup-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--primary-red);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--dark-red);
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        .dark-theme {
+            background-color: #1b1b35;
+            color: #e8e8e8;
+            transition: all 0.5s ease;
+        }
+
+        .dark-theme .aca-hero {
+            background: linear-gradient(rgba(32, 32, 58, 0.85), rgba(42, 42, 94, 0.85)), url('background.jpg') center/cover no-repeat;
+        }
+
+        .dark-theme .bg-light {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%) !important;
+            color: #e8e8e8;
+        }
+
+        .dark-theme .aca-categories {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .dark-theme .aca-about {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        .dark-theme .aca-about-text h3 {
+            color: #ffffff;
+        }
+
+        .dark-theme .aca-about-text p {
+            color: #e8e8e8;
+        }
+
+        .dark-theme .aca-about-text {
+            color: #e8e8e8;
+        }
+
+        .dark-theme .aca-team-section {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        .dark-theme .aca-faq-section {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        .dark-theme .aca-footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+        }
+
+        .dark-theme .card-custom {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            color: #e8e8e8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-theme .card-title-custom {
+            color: #ffffff;
+        }
+
+        .dark-theme .card-text-custom {
+            color: #b8b8b8;
+        }
+
+        .dark-theme .aca-section-title {
+            color: #ffffff;
+        }
+
+        .dark-theme .aca-team-member {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-theme .aca-team-member:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 25, 25, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .dark-theme .aca-accordion-item {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-theme .aca-accordion-header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            color: #ffffff;
+        }
+
+        .dark-theme .aca-accordion-header:hover {
+            background: linear-gradient(135deg, rgba(60, 59, 110, 0.3), rgba(42, 42, 94, 0.3));
+        }
+
+        .dark-theme .aca-accordion-header.active {
+            background: linear-gradient(135deg, rgba(60, 59, 110, 0.4), rgba(42, 42, 94, 0.4));
+            color: #e8e8e8;
+        }
+
+        .dark-theme .aca-accordion-content {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+        }
+
+        .dark-theme .aca-accordion-content p {
+            color: #e8e8e8;
+        }
+
+        .dark-theme .aca-accordion-icon {
+            color: var(--primary-red);
+        }
+
+        .dark-theme .popup-content {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            color: #e8e8e8;
+        }
+
+        .dark-theme .popup-content h3 {
+            color: #ffffff;
+        }
+
+        .dark-theme .form-control-custom {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #e8e8e8;
+        }
+
+        .dark-theme .form-control-custom:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        .dark-theme .form-control-custom::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .dark-theme .carousel-custom .carousel-caption {
+            background: rgba(26, 26, 46, 0.9);
+            color: #ffffff;
+        }
+
+        .dark-theme .btn-outline-custom {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .dark-theme .btn-outline-custom:hover {
+            background: var(--primary-red);
+            color: #ffffff;
+            border-color: var(--primary-red);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @media (max-width: 1200px) {
+            .aca-hero-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .aca-section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .aca-about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .aca-about-image {
+                order: -1;
+                height: 350px;
+            }
+            
+            .aca-hero {
+                height: 450px;
+            }
+            
+            .aca-hero-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-brand-custom h1 {
+                font-size: 20px;
+            }
+            
+            .aca-university-logo {
+                height: 40px;
+                margin-left: 15px;
+            }
+            
+            .aca-hero {
+                height: 400px;
+            }
+            
+            .aca-hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .aca-hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .aca-section-title {
+                font-size: 1.8rem;
+            }
+            
+            .carousel-custom .carousel-item img {
+                height: 300px;
+            }
+            
+            .aca-footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .aca-footer-section {
+                text-align: center;
+            }
+            
+            .aca-footer-section h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-btn {
+                padding: 12px 20px;
+                font-size: 13px;
+                min-width: 140px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .aca-hero {
+                height: 350px;
+            }
+            
+            .aca-hero-content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .aca-section-title {
+                font-size: 1.6rem;
+            }
+            
+            .card-body-custom {
+                padding: 20px;
+            }
+
+            .popup-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand-custom" href="home.html">
+                <img class="aca-logo-img" src="logoACA.webp" alt="ACA Logo">
+                <div>
+                    <h1 class="mb-0">American Cultural</h1>
+                    <p class="mb-0 opacity-8">Association</p>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="cuisine.html">Cuisine</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="music.html">Music</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="movies.html">Movies</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="sports.html">Sports</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="landmarks.html">Landmarks</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="holidays.html">Holidays</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+                </ul>
+                <img src="logoAITU.jpg" alt="University Logo" class="aca-university-logo ms-3">
+            </div>
+        </div>
+    </nav>
+
+    <section class="aca-hero">
+        <div class="container">
+            <div class="aca-hero-content fade-in">
+                <h2>Welcome to the American Cultural Association</h2>
+                <p>Discover the rich tapestry of American culture through its cuisine, music, cinema, sports, landmarks, and traditions.</p>
+                <div class="aca-tagline">Celebrating the Rich Tapestry of American Heritage</div>
+                <div id="date-time-block" style="font-size: 1.2rem; font-weight: 500; margin-top: 20px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="aca-section-title fade-in">American Culture Gallery</h3>
+            <div id="cultureCarousel" class="carousel slide carousel-custom" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="4"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="5"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="6"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="7"></button>
+                    <button type="button" data-bs-target="#cultureCarousel" data-bs-slide-to="8"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Cuisine Image.webp" class="d-block w-100" alt="American Cuisine">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>American Cuisine</h5>
+                            <p>Diverse flavors from across the nation</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Music.webp" class="d-block w-100" alt="American Music">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>American Music</h5>
+                            <p>From jazz to hip-hop</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Hollywood-sign.jpg" class="d-block w-100" alt="American Cinema">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>American Cinema</h5>
+                            <p>Hollywood and beyond</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Sport.webp" class="d-block w-100" alt="American Sports">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>American Sports</h5>
+                            <p>Passion and competition</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="grand-canyon.jpg" class="d-block w-100" alt="American Landmarks">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>American Landmarks</h5>
+                            <p>Iconic monuments and natural wonders</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Holidays.webp" class="d-block w-100" alt="American Holidays">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>American Holidays</h5>
+                            <p>Traditions and celebrations</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="white-house.jpg" class="d-block w-100" alt="White House">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>White House</h5>
+                            <p>Symbol of American democracy</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="statue-liberty.jpg" class="d-block w-100" alt="Statue of Liberty">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Statue of Liberty</h5>
+                            <p>Icon of freedom</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="new-york.jpg" class="d-block w-100" alt="New York City">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>New York City</h5>
+                            <p>The city that never sleeps</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#cultureCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#cultureCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="aca-categories">
+        <div class="container">
+            <h3 class="aca-section-title fade-in">Explore American Culture</h3>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom fade-in">
+                        <img src="Music.webp" class="card-img-top card-img-custom" alt="American Music">
+                        <div class="card-body card-body-custom">
+                            <h5 class="card-title-custom">American Music</h5>
+                            <p class="card-text-custom">From jazz and blues to country and hip-hop—experience America's musical legacy and its global influence.</p>
+                            <a href="music.html" class="btn btn-custom">Explore Music</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom fade-in">
+                        <img src="Cuisine Image.webp" class="card-img-top card-img-custom" alt="American Cuisine">
+                        <div class="card-body card-body-custom">
+                            <h5 class="card-title-custom">American Cuisine</h5>
+                            <p class="card-text-custom">From classic burgers to regional specialties—discover the diverse flavors that define American food culture.</p>
+                            <a href="cuisine.html" class="btn btn-custom">Explore Cuisine</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom fade-in">
+                        <img src="Sport.webp" class="card-img-top card-img-custom" alt="American Sports">
+                        <div class="card-body card-body-custom">
+                            <h5 class="card-title-custom">American Sports</h5>
+                            <p class="card-text-custom">From baseball to basketball—discover America's passion for sports, competition, and team spirit.</p>
+                            <a href="sports.html" class="btn btn-custom">Explore Sports</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom fade-in">
+                        <img src="Hollywood-sign.jpg" class="card-img-top card-img-custom" alt="American Cinema">
+                        <div class="card-body card-body-custom">
+                            <h5 class="card-title-custom">American Cinema</h5>
+                            <p class="card-text-custom">Hollywood and beyond—explore the films and directors that shaped global cinema and storytelling.</p>
+                            <a href="movies.html" class="btn btn-custom">Explore Cinema</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom fade-in">
+                        <img src="grand-canyon.jpg" class="card-img-top card-img-custom" alt="American Landmarks">
+                        <div class="card-body card-body-custom">
+                            <h5 class="card-title-custom">American Landmarks</h5>
+                            <p class="card-text-custom">Iconic monuments and natural wonders—explore America's most famous landmarks and their histories.</p>
+                            <a href="landmarks.html" class="btn btn-custom">Explore Landmarks</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom fade-in">
+                        <img src="Holidays.webp" class="card-img-top card-img-custom" alt="American Holidays">
+                        <div class="card-body card-body-custom">
+                            <h5 class="card-title-custom">American Holidays</h5>
+                            <p class="card-text-custom">National celebrations and traditions—discover how America marks special occasions throughout the year.</p>
+                            <a href="holidays.html" class="btn btn-custom">Explore Holidays</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="aca-section-title fade-in">Cultural Insights</h3>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card card-custom fade-in h-100">
+                        <div class="card-body card-body-custom d-flex flex-column">
+                            <h4 class="card-title-custom">Cultural Diversity</h4>
+                            <p class="card-text-custom flex-grow-1">American culture is a melting pot of traditions from around the world, creating a unique and diverse society that values innovation, individual expression, and cultural exchange.</p>
+                            <div class="btn-group mt-auto" role="group">
+                                <button type="button" class="btn btn-outline-custom btn-sm">History</button>
+                                <button type="button" class="btn btn-outline-custom btn-sm">Traditions</button>
+                                <button type="button" class="btn btn-outline-custom btn-sm">Values</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-custom fade-in h-100">
+                        <div class="card-body card-body-custom d-flex flex-column">
+                            <h4 class="card-title-custom">Innovation & Progress</h4>
+                            <p class="card-text-custom flex-grow-1">The United States has been at the forefront of technological innovation, entertainment, and scientific discovery, shaping global culture through its achievements and pioneering spirit.</p>
+                            <div class="btn-group mt-auto" role="group">
+                                <button type="button" class="btn btn-outline-custom btn-sm">Technology</button>
+                                <button type="button" class="btn btn-outline-custom btn-sm">Arts</button>
+                                <button type="button" class="btn btn-outline-custom btn-sm">Science</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="aca-about">
+        <div class="container">
+            <div class="aca-about-content fade-in">
+                <div class="aca-about-text">
+                    <h3>About American Cultural Association</h3>
+                    <p>The American Cultural Association is dedicated to exploring and sharing the diverse cultural heritage of the United States. From the bustling cities to the quiet countryside, American culture reflects both unity and diversity.</p>
+                    <p>Our mission is to educate people worldwide about American traditions, values, and way of life through various cultural aspects including cuisine, music, cinema, sports, landmarks, and holidays.</p>
+                    <a href="#" class="btn btn-custom">Learn More About Us</a>
+                </div>
+                <div class="aca-about-image">
+                    <img src="white-house.jpg" alt="About American Culture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h3 class="aca-section-title fade-in">Join Our Cultural Newsletter</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card card-custom fade-in">
+                        <div class="card-body card-body-custom">
+                            <form class="row g-4">
+                                <div class="col-md-6">
+                                    <label for="newsletterName" class="form-label fw-semibold">First Name</label>
+                                    <input type="text" class="form-control form-control-custom" id="newsletterName" placeholder="Enter your first name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="newsletterEmail" class="form-label fw-semibold">Email Address</label>
+                                    <input type="email" class="form-control form-control-custom" id="newsletterEmail" placeholder="Enter your email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="newsletterInterest" class="form-label fw-semibold">Primary Interest</label>
+                                    <select class="form-select form-control-custom" id="newsletterInterest">
+                                        <option selected>Choose your interest...</option>
+                                        <option>American Cuisine</option>
+                                        <option>American Music</option>
+                                        <option>American Cinema</option>
+                                        <option>American Sports</option>
+                                        <option>American Landmarks</option>
+                                        <option>American Holidays</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletterAgree">
+                                        <label class="form-check-label" for="newsletterAgree">
+                                            I agree to receive monthly updates about American culture and events
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button type="submit" class="btn btn-custom px-4">Subscribe Now</button>
+                                        <button type="reset" class="btn btn-outline-custom px-4">Clear Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="aca-faq-section py-5">
+        <div class="container">
+            <h3 class="aca-section-title fade-in">Frequently Asked Questions</h3>
+            <div class="aca-accordion" id="faqAccordion">
+                <div class="aca-accordion-item fade-in">
+                    <button class="aca-accordion-header" id="faqHeading1">
+                        What is the purpose of the American Cultural Association?
+                        <span class="aca-accordion-icon">+</span>
+                    </button>
+                    <div class="aca-accordion-content" id="faqContent1">
+                        <p>The American Cultural Association is dedicated to exploring and sharing the diverse cultural heritage of the United States. Our mission is to educate people worldwide about American traditions, values, and way of life through various cultural aspects including cuisine, music, cinema, sports, landmarks, and holidays.</p>
+                    </div>
+                </div>
+                
+                <div class="aca-accordion-item fade-in">
+                    <button class="aca-accordion-header" id="faqHeading2">
+                        How can I learn more about American music?
+                        <span class="aca-accordion-icon">+</span>
+                    </button>
+                    <div class="aca-accordion-content" id="faqContent2">
+                        <p>You can explore our dedicated Music section which covers various American music genres from jazz and blues to country and hip-hop. We provide information about influential artists, historical context, and the evolution of American music over time.</p>
+                    </div>
+                </div>
+                
+                <div class="aca-accordion-item fade-in">
+                    <button class="aca-accordion-header" id="faqHeading3">
+                        What American holidays are covered on this website?
+                        <span class="aca-accordion-icon">+</span>
+                    </button>
+                    <div class="aca-accordion-content" id="faqContent3">
+                        <p>Our Holidays section covers major American celebrations including Independence Day, Thanksgiving, Memorial Day, Labor Day, and cultural events like Halloween and Christmas traditions in the United States. Each holiday page explains the history, traditions, and significance of these celebrations.</p>
+                    </div>
+                </div>
+                
+                <div class="aca-accordion-item fade-in">
+                    <button class="aca-accordion-header" id="faqHeading4">
+                        Can I contribute content to this website?
+                        <span class="aca-accordion-icon">+</span>
+                    </button>
+                    <div class="aca-accordion-content" id="faqContent4">
+                        <p>Currently, the website is maintained by our team of students. However, if you have suggestions or would like to share your knowledge about American culture, please feel free to contact us through our Contact page. We appreciate feedback and ideas for improving our content.</p>
+                    </div>
+                </div>
+                
+                <div class="aca-accordion-item fade-in">
+                    <button class="aca-accordion-header" id="faqHeading5">
+                        Are there any membership opportunities?
+                        <span class="aca-accordion-icon">+</span>
+                    </button>
+                    <div class="aca-accordion-content" id="faqContent5">
+                        <p>At this time, we don't offer formal membership programs. However, you can stay connected with us by subscribing to our newsletter for regular updates about American culture, events, and new content additions to our website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="aca-team-section">
+        <div class="container">
+            <h3 class="aca-section-title fade-in">La Crimson Mafia Team</h3>
+            <div class="aca-team-grid">
+                <a href="contact.html#ilyas" class="aca-team-card fade-in">
+                    <img src="iliyas.jpg" alt="Iliyas" class="aca-team-image">
+                    <div class="aca-team-content">
+                        <h4>Iliyas</h4>
+                        <div class="aca-team-role">Project Lead & Developer</div>
+                        <p>Responsible for music and movie pages development and project coordination.</p>
+                        <div class="aca-team-email">241705@astanait.edu.kz</div>
+                    </div>
+                </a>
+                
+                <a href="contact.html#yerkebulan" class="aca-team-card fade-in">
+                    <img src="Erkosh.jpg" alt="Yerkebulan Rakhymbay" class="aca-team-image">
+                    <div class="aca-team-content">
+                        <h4>Yerkebulan Rakhymbay</h4>
+                        <div class="aca-team-role">Frontend Developer</div>
+                        <p>Focused on cuisine and homepage pages with modern web technologies.</p>
+                        <div class="aca-team-email">240065@astanait.edu.kz</div>
+                    </div>
+                </a>
+                
+                <a href="contact.html#radmir" class="aca-team-card fade-in">
+                    <img src="Radik.jpg" alt="Radmir Toizhanov" class="aca-team-image">
+                    <div class="aca-team-content">
+                        <h4>Radmir Toizhanov</h4>
+                        <div class="aca-team-role">Content Developer</div>
+                        <p>Handled sports and holidays pages content creation and design.</p>
+                        <div class="aca-team-email">241561@astanait.edu.kz</div>
+                    </div>
+                </a>
+                
+                <a href="contact.html#ramazan" class="aca-team-card fade-in">
+                    <img src="Roma.jpg" alt="Ramazan Nagimov" class="aca-team-image">
+                    <div class="aca-team-content">
+                        <h4>Ramazan Nagimov</h4>
+                        <div class="aca-team-role">UI/UX Developer</div>
+                        <p>Responsible for landmarks and contact pages design and user experience.</p>
+                        <div class="aca-team-email">242394@astanait.edu.kz</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="aca-footer">
+        <div class="container">
+            <div class="aca-footer-content">
+                <div class="aca-footer-section">
+                    <h3>American Cultural Association</h3>
+                    <p>Exploring the rich heritage and traditions of the United States. Our mission is to promote understanding and appreciation of American culture worldwide through education and cultural exchange.</p>
+                </div>
+                
+                <div class="aca-footer-section">
+                    <h3>Team Members</h3>
+                    <div class="aca-team-members">
+                        <a href="contact.html#ilyas" class="aca-team-member">Iliyas</a>
+                        <a href="contact.html#yerkebulan" class="aca-team-member">Yerkebulan</a>
+                        <a href="contact.html#radmir" class="aca-team-member">Radmir</a>
+                        <a href="contact.html#ramazan" class="aca-team-member">Ramazan</a>
+                    </div>
+                </div>
+                
+                <div class="aca-footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="aca-footer-links">
+                        <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="cuisine.html"><i class="fas fa-chevron-right"></i> Cuisine</a></li>
+                        <li><a href="music.html"><i class="fas fa-chevron-right"></i> Music</a></li>
+                        <li><a href="movies.html"><i class="fas fa-chevron-right"></i> Movies</a></li>
+                        <li><a href="sports.html"><i class="fas fa-chevron-right"></i> Sports</a></li>
+                        <li><a href="landmarks.html"><i class="fas fa-chevron-right"></i> Landmarks</a></li>
+                        <li><a href="holidays.html"><i class="fas fa-chevron-right"></i> Holidays</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="aca-footer-bottom">
+                <p>&copy; 2025 American Cultural Association. All rights reserved. Educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-buttons">
+        <button id="openPopupBtn" class="floating-btn">
+            <i class="fas fa-envelope me-2"></i>Subscribe
+        </button>
+        <button id="themeToggleBtn" class="floating-btn">
+            <i class="fas fa-moon me-2"></i>Dark Mode
+        </button>
+    </div>
+
+    <div id="popupForm" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h3>Subscribe to Our Newsletter</h3>
+            <form id="popupSubscribeForm">
+                <div class="mb-3">
+                    <label for="popupName" class="form-label">Name</label>
+                    <input type="text" class="form-control form-control-custom" id="popupName" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="popupEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-custom" id="popupEmail" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="btn btn-custom w-100">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const openPopupBtn = document.getElementById('openPopupBtn');
+        const popupForm = document.getElementById('popupForm');
+        const closeBtn = document.querySelector('.close-btn');
+
+        openPopupBtn.addEventListener('click', () => {
+            popupForm.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            popupForm.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === popupForm) {
+                popupForm.style.display = 'none';
+            }
+        });
+
+        document.getElementById('popupSubscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            popupForm.style.display = 'none';
+            this.reset();
+        });
+
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        let isDarkMode = false;
+
+        themeToggleBtn.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-theme');
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun me-2"></i>Light Mode';
+                themeToggleBtn.style.background = 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)';
+                themeToggleBtn.style.color = '#333';
+            } else {
+                document.body.classList.remove('dark-theme');
+                themeToggleBtn.innerHTML = '<i class="fas fa-moon me-2"></i>Dark Mode';
+                themeToggleBtn.style.background = 'linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%)';
+                themeToggleBtn.style.color = 'white';
+            }
+        });
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        fadeInOnScroll();
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>
