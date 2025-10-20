@@ -87,6 +87,7 @@
             flex: 1;
             padding: 60px 40px;
             background: white;
+            transition: transform 0.5s ease;
         }
 
         .aca-logo {
@@ -274,6 +275,22 @@
             display: none;
         }
 
+        #welcome {
+            margin-top: 20px;
+            font-size: 20px;
+            color: green;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #welcome.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             .login-container {
                 flex-direction: column;
@@ -317,7 +334,7 @@
             </div>
         </div>
         
-        <div class="login-form-section">
+        <div class="login-form-section" id="loginFormSection">
             <div class="aca-logo">
                 <img class="aca-logo-img" src="logoACA.webp" alt="ACA Logo">
                 <div>
@@ -334,6 +351,8 @@
             <div class="success-message" id="successMessage">
                 <i class="fas fa-check-circle"></i> Registration successful! You can now log in.
             </div>
+
+            <div id="welcome"></div>
 
             <div class="form-content active" id="loginForm">
                 <form id="loginFormElement">
@@ -392,7 +411,16 @@
         </div>
     </div>
 
+    <audio id="loginSound" src="https://cdn.pixabay.com/download/audio/2021/09/01/audio_9d3cc6e67b.mp3?filename=success-1-6297.mp3"></audio>
+
     <script>
+        // Predefined users array from main.html
+        const users = [
+            { name: "Eren Yeager", email: "eren@aot.com" },
+            { name: "Mikasa Ackerman", email: "mikasa@aot.com" },
+            { name: "Armin Arlert", email: "armin@aot.com" }
+        ];
+
         document.querySelectorAll('.tab-btn').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -402,6 +430,7 @@
                 document.getElementById(button.dataset.tab + 'Form').classList.add('active');
                 
                 document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('welcome').classList.remove('show');
             });
         });
 
@@ -437,16 +466,78 @@
             }
             
             if (valid) {
+                // Special user check from main.html
                 if (email === "radmirpdf@gmail.com" && password === "crosbyrumiramazan") {
-                    alert("Welcome back, Levi Ackerman!");
-                    window.location.href = "home.html";
+                    // Create user object with greet method from main.html
+                    const currentUser = {
+                        name: "Levi Ackerman",
+                        email: email,
+                        greet() {
+                            return `Welcome back, ${this.name}!`;
+                        }
+                    };
+
+                    // Show welcome message with animation
+                    const welcome = document.getElementById('welcome');
+                    welcome.textContent = currentUser.greet();
+                    welcome.classList.add('show');
+
+                    // Play login sound
+                    const loginSound = document.getElementById('loginSound');
+                    loginSound.play();
+
+                    // Add animation to form
+                    const loginFormSection = document.getElementById('loginFormSection');
+                    loginFormSection.style.transform = "scale(1.05)";
+                    setTimeout(() => {
+                        loginFormSection.style.transform = "scale(1)";
+                    }, 500);
+
+                    // Add user to users array and log to console
+                    users.push(currentUser);
+                    const userNames = users.map(u => u.name);
+                    console.log("All users:", userNames.join(", "));
+
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = "home.html";
+                    }, 2000);
+                    
                 } else {
-                    const users = JSON.parse(localStorage.getItem('acaUsers')) || [];
-                    const user = users.find(u => u.email === email && u.password === password);
+                    // Regular user check
+                    const storedUsers = JSON.parse(localStorage.getItem('acaUsers')) || [];
+                    const user = storedUsers.find(u => u.email === email && u.password === password);
                     
                     if (user) {
-                        alert(`Welcome back, ${user.name}!`);
-                        window.location.href = "home.html";
+                        // Create user object with greet method
+                        const currentUser = {
+                            name: user.name,
+                            email: user.email,
+                            greet() {
+                                return `Welcome back, ${this.name}!`;
+                            }
+                        };
+
+                        // Show welcome message with animation
+                        const welcome = document.getElementById('welcome');
+                        welcome.textContent = currentUser.greet();
+                        welcome.classList.add('show');
+
+                        // Play login sound
+                        const loginSound = document.getElementById('loginSound');
+                        loginSound.play();
+
+                        // Add animation to form
+                        const loginFormSection = document.getElementById('loginFormSection');
+                        loginFormSection.style.transform = "scale(1.05)";
+                        setTimeout(() => {
+                            loginFormSection.style.transform = "scale(1)";
+                        }, 500);
+
+                        // Redirect after delay
+                        setTimeout(() => {
+                            window.location.href = "home.html";
+                        }, 2000);
                     } else {
                         alert("Invalid email or password. Please try again or register.");
                     }
@@ -496,20 +587,20 @@
             }
             
             if (valid) {
-                const users = JSON.parse(localStorage.getItem('acaUsers')) || [];
+                const storedUsers = JSON.parse(localStorage.getItem('acaUsers')) || [];
                 
-                if (users.find(user => user.email === email)) {
+                if (storedUsers.find(user => user.email === email)) {
                     emailError.textContent = 'This email is already registered.';
                     return;
                 }
                 
-                users.push({
+                storedUsers.push({
                     name: name,
                     email: email,
                     password: password
                 });
                 
-                localStorage.setItem('acaUsers', JSON.stringify(users));
+                localStorage.setItem('acaUsers', JSON.stringify(storedUsers));
                 
                 document.getElementById('successMessage').style.display = 'block';
                 
